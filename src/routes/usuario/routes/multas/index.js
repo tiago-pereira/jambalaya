@@ -5,7 +5,7 @@ class Multas extends Component {
   render(){
     return (
       <div>
-        Multas 
+        <h2> Multas </h2>
       </div>
     )
   }

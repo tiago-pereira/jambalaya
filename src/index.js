@@ -1,9 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
-import { IndexRoute, Route } from 'react-router'
-import { BrowserRouter as Router } from 'react-router-dom'
-import { ConnectedRouter, routerReducer, routerMiddleware } from 'react-router-redux/es'
+import { Route } from 'react-router'
+import { ConnectedRouter, routerMiddleware } from 'react-router-redux/es'
 import createHistory from 'history/createBrowserHistory'
 import { createStore, applyMiddleware, compose } from 'redux'
 

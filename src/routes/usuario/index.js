@@ -27,7 +27,7 @@ class Usuario extends Component {
   }
 
   render(){
-    const { match, push } = this.props
+    const { push } = this.props
 
     return (
       <div>

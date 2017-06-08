@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { Accordion, Button } from 'semantic-ui-react'
+import { Accordion } from 'semantic-ui-react'
 
 
 import './avisos.css'
@@ -21,6 +21,7 @@ class Avisos extends Component {
   render(){
     return (
       <div>
+        <h2> Avisos </h2>
         <Accordion
           className="avisos-accordion"
           panels={this.panels} 
