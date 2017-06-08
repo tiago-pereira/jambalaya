@@ -11,7 +11,8 @@ class LoginRoute extends Component {
         <input />
 
         <button> botao </button>
-      </div>)
+      </div>
+    )
   }
 }
 

@@ -4,8 +4,6 @@ export const UPDATED_LOGIN = 'UPDATED_LOGIN'
 export const UPDATED_PASWORD = 'UPDATED_PASSWORD'
 
 const initialState = {
-  login: "",
-  password: ""
 }
 
 export default function reducer(state = initialState, action){
