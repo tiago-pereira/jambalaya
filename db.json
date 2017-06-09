@@ -1,0 +1,15 @@
+{
+  "moradores": [
+    { "id": 1, "nome": "Tiago", "telefone": "0000-0000" },
+    { "id": 2, "nome": "João", "telefone": "0000-0000" },
+    { "id": 3, "nome": "Pedro", "telefone": "0000-0000" },
+    { "id": 4, "nome": "Felipe", "telefone": "0000-0000" },
+    { "id": 5, "nome": "Ana", "telefone": "0000-0000" },
+    { "id": 6, "nome": "Mariana", "telefone": "0000-0000" },
+    { "id": 7, "nome": "Fernanda", "telefone": "0000-0000" }
+  ],
+  "avisos": [
+    { "id": 1, "titulo": "Roubo!", "descricao": "Roubaram o meu microondas." },
+    { "id": 2, "titulo": "Horários do porteiro", "descricao": "O porteiro mudou de horário." }
+  ]
+}

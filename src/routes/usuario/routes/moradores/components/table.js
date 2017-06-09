@@ -4,6 +4,8 @@ import { Icon, Menu, Table } from 'semantic-ui-react'
 class TabelaMoradores extends Component {
 
   render(){
+    const { rows } = this.props
+
     return (
       <Table celled>
         <Table.Header>
@@ -17,47 +19,17 @@ class TabelaMoradores extends Component {
         </Table.Header>
 
         <Table.Body>
-          <Table.Row>
-            <Table.Cell>First</Table.Cell>
-            <Table.Cell>Cell</Table.Cell>
-            <Table.Cell>Cell</Table.Cell>
-            <Table.Cell>Cell</Table.Cell>
-            <Table.Cell>Cell</Table.Cell>
-          </Table.Row>
-          <Table.Row>
-            <Table.Cell>Cell</Table.Cell>
-            <Table.Cell>Cell</Table.Cell>
-            <Table.Cell>Cell</Table.Cell>
-            <Table.Cell>Cell</Table.Cell>
-            <Table.Cell>Cell</Table.Cell>
-          </Table.Row>
-          <Table.Row>
-            <Table.Cell>Cell</Table.Cell>
-            <Table.Cell>Cell</Table.Cell>
-            <Table.Cell>Cell</Table.Cell>
-            <Table.Cell>Cell</Table.Cell>
-            <Table.Cell>Cell</Table.Cell>
-          </Table.Row>
+          {rows.map((row, index) =>
+            <Table.Row key={index}>
+              <Table.Cell>{row.nome}</Table.Cell>
+              <Table.Cell>Cell</Table.Cell>
+              <Table.Cell>{row.telefone}</Table.Cell>
+              <Table.Cell>Cell</Table.Cell>
+              <Table.Cell>Cell</Table.Cell>
+            </Table.Row>
+          )}
         </Table.Body>
 
-        <Table.Footer>
-        <Table.Row>
-          <Table.HeaderCell colSpan='5'>
-            <Menu floated='right' pagination>
-              <Menu.Item as='a' icon>
-                <Icon name='left chevron' />
-              </Menu.Item>
-              <Menu.Item as='a'>1</Menu.Item>
-              <Menu.Item as='a'>2</Menu.Item>
-              <Menu.Item as='a'>3</Menu.Item>
-              <Menu.Item as='a'>4</Menu.Item>
-              <Menu.Item as='a' icon>
-                <Icon name='right chevron' />
-              </Menu.Item>
-            </Menu>
-          </Table.HeaderCell>
-        </Table.Row>
-        </Table.Footer>
       </Table>
     )
   }
