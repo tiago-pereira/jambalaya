@@ -4,6 +4,25 @@ import { connect } from 'react-redux'
 
 import TabelaMoradores from './components/table'
 import { doRequestMoradores } from '../../../../ducks/usuario'
+import { Sidebar, Menu, Icon } from 'semantic-ui-react'
+
+import { Button, Checkbox, Form } from 'semantic-ui-react'
+import Title from '../../components/title'
+
+
+const AddModal = (props) => 
+  <Form>
+    <Form.Group widths='equal'>
+      <Form.Input label='Nome' placeholder='Ex: João Ferreira' />
+      <Form.Input label='CPF' placeholder='000.000.000-00' />
+      <Form.Input label='Apartamento' placeholder='Ex: 02' />
+    </Form.Group>
+    <Form.Group widths='equal'>
+      <Form.Input label='Telefone' placeholder='(00) 0000-0000' />
+      <Form.Input label='Email' placeholder='Ex: joao@email.com' />
+    </Form.Group>
+    <Button type="button" onClick={() => props.push('/usuario')}>Adicionar</Button>
+  </Form>
 
 class Moradores extends Component {
 
@@ -18,7 +37,9 @@ class Moradores extends Component {
   render(){
     return (
       <div>
-        <h2> Moradores </h2>
+        <Title addModal={<AddModal/>}>
+          Moradores 
+        </Title>
         <TabelaMoradores rows={this.props.moradores}/>
       </div>
     )

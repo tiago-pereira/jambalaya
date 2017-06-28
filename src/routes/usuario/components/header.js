@@ -33,7 +33,7 @@ class UsuarioHeader extends Component {
           </div>
           <div className="usuario-header-right-container"> 
             <Icon className="usuario-header-icon" size="large" name="alarm outline" />
-            <span className="usuario-header-name"> Nome do usuário </span>
+            <span className="usuario-header-name"> Tiago Pereira </span>
             <Icon className="usuario-header-icon" size="large" name="setting" />
           </div>
         </div>

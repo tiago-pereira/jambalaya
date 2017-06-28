@@ -3,9 +3,19 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { Accordion } from 'semantic-ui-react'
 
+import { Button, Checkbox, Form } from 'semantic-ui-react'
 import { doRequestAvisos } from '../../../../ducks/usuario'
+import Title from '../../components/title'
 
 import './avisos.css'
+
+
+const AddModal = (props) => 
+  <Form>
+    <Form.Input label='Título' placeholder='' />
+    <Form.TextArea label='Descrição' placeholder='' />
+    <Button type="button" onClick={() => props.push('/usuario')}>Adicionar</Button>
+  </Form>
 
 class Avisos extends Component {
 
@@ -18,12 +28,16 @@ class Avisos extends Component {
 
     return (
       <div>
-        <h2> Avisos </h2>
-        <Accordion
-          className="avisos-accordion"
-          panels={avisos.map(aviso => ({title: aviso.titulo, content: aviso.descricao}))} 
-          styled exclusive={false}
-        />
+        <Title addModal={<AddModal/>}>
+          Avisos
+        </Title>
+        <div style={{marginTop: 16}}>
+          <Accordion
+            className="avisos-accordion"
+            panels={avisos.map(aviso => ({title: aviso.titulo, content: aviso.descricao}))} 
+            styled exclusive={false}
+          />
+        </div>
       </div>
     )
   }
