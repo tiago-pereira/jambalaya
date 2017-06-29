@@ -9,20 +9,32 @@ class UsuarioHeader extends Component {
     super(props)
 
     this.state = {
-      visible: false
+      visible: false,
+      notificacoes: false
+
     }
 
   }
 
   toggleVisibility() {
     this.setState({
+      ...this.state,
       visible: !this.state.visible
+    })
+  }
+
+  toggleNotificacoes() {
+    this.setState({
+      ...this.state,
+      notificacoes: !this.state.notificacoes
     })
   }
 
   render(){
     const { visible } = this.state
     const { children, push, routes } = this.props
+
+    console.log(this.state.notificacoes)
 
     return (
       <div>
@@ -32,8 +44,28 @@ class UsuarioHeader extends Component {
             <Icon className="usuario-header-icon" size="big" name="content" />
           </div>
           <div className="usuario-header-right-container"> 
-            <Icon className="usuario-header-icon" size="large" name="alarm outline" />
-            <span className="usuario-header-name"> Tiago Pereira </span>
+            <div onClick={this.toggleNotificacoes.bind(this)}>
+              <Icon className="usuario-header-icon" size="large" name="alarm outline" />
+
+              <div style={{
+                padding: 8,
+                opacity: this.state.notificacoes ? '1': '0',
+                transition: '0.3s all ease-in-out',
+                position: 'absolute', 
+                backgroundColor: 'white', 
+                zIndex: 1,
+                top: 52,
+                border: '1px solid black',
+                borderRadius: '10px',
+                width: 200,
+                right: 15}}>
+                <b style={{marginBottom: 8}}>Notificações:</b>
+
+                {this.props.notificacoes.map(n => <div style={{borderBottom: '1px solid #CCCCCC'}}>{n}</div>)}
+
+              </div>
+            </div>
+            <span className="usuario-header-name"> {this.props.nome} </span>
             <Icon className="usuario-header-icon" size="large" name="setting" />
           </div>
         </div>
@@ -52,10 +84,14 @@ class UsuarioHeader extends Component {
             <Icon name='warning sign' />
             Multas e advertências 
           </Menu.Item>
-          <Menu.Item name='users' onClick={() => push(routes.MORADORES)}>
+          {this.props.role === 'admin' ? <Menu.Item name='users' onClick={() => push(routes.MORADORES)}>
             <Icon name='users' />
             Moradores 
-          </Menu.Item>
+          </Menu.Item> : ''}
+          {this.props.role === 'admin' ? <Menu.Item name='' onClick={() => push(routes.USUARIOS)}>
+            <Icon name='id card outline' />
+            Usuários
+          </Menu.Item> : ''}
         </Sidebar>
         <Sidebar.Pusher>
           <div style={{minHeight: 'calc(100vh - 45px)'}}>

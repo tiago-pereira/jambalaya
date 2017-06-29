@@ -1,15 +1,90 @@
 {
+  "usuarios": [
+    {
+      "id": 1,
+      "usuario": "admin",
+      "nome": "Administrador",
+      "senha": "admin",
+      "role": "admin",
+      "notificacoes": []
+    },
+    {
+      "id": 2,
+      "usuario": "tiago.silva",
+      "nome": "Tiago Pereira da Silva",
+      "senha": "123456",
+      "role": "user",
+      "notificacoes": [
+        "02/09 22:30 - Reclamação de barulho",
+        "01/09 18:30 - Deixou portão aberto"
+      ]
+    },
+    {
+      "usuario": "joao.ferreira",
+      "role": "admin",
+      "id": 3,
+      "notificacoes": []
+    },
+    {
+      "usuario": "joao.felipe",
+      "role": "admin",
+      "senha": "123456",
+      "id": 4,
+      "notificacoes": []
+    }
+  ],
+  "reservas": [
+    {
+      "id": 1,
+      "morador": "Tiago",
+      "apartamento": "0000-0000",
+      "dia": "09/02/2017",
+      "inicio": "16:40",
+      "fim": "20:30"
+    },
+    {
+      "morador": "Tiago",
+      "apartamento": "1",
+      "dia": "09/02/1993",
+      "inicio": "10:00",
+      "fim": "13:30",
+      "salao": "Piscina",
+      "id": 2
+    }
+  ],
   "moradores": [
-    { "id": 1, "nome": "Tiago", "telefone": "0000-0000" },
-    { "id": 2, "nome": "João", "telefone": "0000-0000" },
-    { "id": 3, "nome": "Pedro", "telefone": "0000-0000" },
-    { "id": 4, "nome": "Felipe", "telefone": "0000-0000" },
-    { "id": 5, "nome": "Ana", "telefone": "0000-0000" },
-    { "id": 6, "nome": "Mariana", "telefone": "0000-0000" },
-    { "id": 7, "nome": "Fernanda", "telefone": "0000-0000" }
+    {
+      "nome": "Tiago Pereira",
+      "cpf": "063.080.249-10",
+      "apartamento": "02",
+      "telefone": "(47) 99697-6816",
+      "email": "tiagops.prog@gmail.com",
+      "id": 1
+    },
+    {
+      "nome": "Felipe da Silva",
+      "cpf": "023.232.121-12",
+      "apartamento": "11",
+      "telefone": "",
+      "email": "felipe@gmail.com",
+      "id": 2
+    }
   ],
   "avisos": [
-    { "id": 1, "titulo": "Roubo!", "descricao": "Roubaram o meu microondas." },
-    { "id": 2, "titulo": "Horários do porteiro", "descricao": "O porteiro mudou de horário." }
+    {
+      "id": 1,
+      "titulo": "Roubo!",
+      "descricao": "Roubaram o microondas do Felipe do 102 A, estamos investigando o caso. Se você é o ladrão, fica esperto, vamos te pegar."
+    },
+    {
+      "id": 2,
+      "titulo": "Horários do porteiro",
+      "descricao": "O porteiro mudou de horário. Das 04"
+    },
+    {
+      "titulo": "Novo aviso",
+      "descricao": "Teste de aviso",
+      "id": 3
+    }
   ]
 }

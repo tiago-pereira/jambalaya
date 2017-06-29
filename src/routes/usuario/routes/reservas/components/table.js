@@ -4,12 +4,15 @@ import { Icon, Menu, Table } from 'semantic-ui-react'
 class TabelaReservas extends Component {
 
   render(){
+    const { rows } = this.props
+
     return (
       <Table celled>
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell>Morador</Table.HeaderCell>
             <Table.HeaderCell>Nr. Apartamento</Table.HeaderCell>
+            <Table.HeaderCell>Salão</Table.HeaderCell>
             <Table.HeaderCell>Dia</Table.HeaderCell>
             <Table.HeaderCell>Início</Table.HeaderCell>
             <Table.HeaderCell>Fim</Table.HeaderCell>
@@ -17,47 +20,17 @@ class TabelaReservas extends Component {
         </Table.Header>
 
         <Table.Body>
-          <Table.Row>
-            <Table.Cell>First</Table.Cell>
-            <Table.Cell>Cell</Table.Cell>
-            <Table.Cell>Cell</Table.Cell>
-            <Table.Cell>Cell</Table.Cell>
-            <Table.Cell>Cell</Table.Cell>
-          </Table.Row>
-          <Table.Row>
-            <Table.Cell>Cell</Table.Cell>
-            <Table.Cell>Cell</Table.Cell>
-            <Table.Cell>Cell</Table.Cell>
-            <Table.Cell>Cell</Table.Cell>
-            <Table.Cell>Cell</Table.Cell>
-          </Table.Row>
-          <Table.Row>
-            <Table.Cell>Cell</Table.Cell>
-            <Table.Cell>Cell</Table.Cell>
-            <Table.Cell>Cell</Table.Cell>
-            <Table.Cell>Cell</Table.Cell>
-            <Table.Cell>Cell</Table.Cell>
-          </Table.Row>
+          {rows.map((row, index) =>
+            <Table.Row key={index}>
+              <Table.Cell>{row.morador}</Table.Cell>
+              <Table.Cell>{row.apartamento}</Table.Cell>
+              <Table.Cell>{row.salao}</Table.Cell>
+              <Table.Cell>{row.dia}</Table.Cell>
+              <Table.Cell>{row.inicio}</Table.Cell>
+              <Table.Cell>{row.fim}</Table.Cell>
+            </Table.Row>
+          )}
         </Table.Body>
-
-        <Table.Footer>
-        <Table.Row>
-          <Table.HeaderCell colSpan='5'>
-            <Menu floated='right' pagination>
-              <Menu.Item as='a' icon>
-                <Icon name='left chevron' />
-              </Menu.Item>
-              <Menu.Item as='a'>1</Menu.Item>
-              <Menu.Item as='a'>2</Menu.Item>
-              <Menu.Item as='a'>3</Menu.Item>
-              <Menu.Item as='a'>4</Menu.Item>
-              <Menu.Item as='a' icon>
-                <Icon name='right chevron' />
-              </Menu.Item>
-            </Menu>
-          </Table.HeaderCell>
-        </Table.Row>
-        </Table.Footer>
       </Table>
     )
   }

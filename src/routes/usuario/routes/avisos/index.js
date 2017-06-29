@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { Accordion } from 'semantic-ui-react'
 
 import { Button, Checkbox, Form } from 'semantic-ui-react'
-import { doRequestAvisos } from '../../../../ducks/usuario'
+import { doSaveAviso, doRequestAvisos, updateField } from '../../../../ducks/usuario'
 import Title from '../../components/title'
 
 import './avisos.css'
@@ -12,9 +12,9 @@ import './avisos.css'
 
 const AddModal = (props) => 
   <Form>
-    <Form.Input label='Título' placeholder='' />
-    <Form.TextArea label='Descrição' placeholder='' />
-    <Button type="button" onClick={() => props.push('/usuario')}>Adicionar</Button>
+    <Form.Input value={props.titulo} label='Título' placeholder='' onChange={(e) => props.updateField('newAviso', 'titulo', e.target.value)}/>
+    <Form.TextArea value={props.descricao} label='Descrição' placeholder='' onChange={(e) => props.updateField('newAviso', 'descricao', e.target.value)}/>
+    <Button type="button" onClick={() => props.doSaveAviso({titulo: props.titulo, descricao: props.descricao})}>Adicionar</Button>
   </Form>
 
 class Avisos extends Component {
@@ -24,17 +24,22 @@ class Avisos extends Component {
   }
 
   render(){
-    const { avisos } = this.props
+    const { avisos, newAviso } = this.props
+
+    console.log(this.props.role)
 
     return (
       <div>
-        <Title addModal={<AddModal/>}>
+        <Title 
+          showAdd={this.props.role === 'admin'}
+          closeModal={this.props.closeAddModal}
+          addModal={<AddModal {...newAviso} updateField={this.props.updateField} doSaveAviso={this.props.doSaveAviso}/>}>
           Avisos
         </Title>
         <div style={{marginTop: 16}}>
           <Accordion
             className="avisos-accordion"
-            panels={avisos.map(aviso => ({title: aviso.titulo, content: aviso.descricao}))} 
+            panels={avisos.sort((a, b) => b.id - a.id).map(aviso => ({title: aviso.titulo, content: aviso.descricao}))} 
             styled exclusive={false}
           />
         </div>
@@ -45,13 +50,17 @@ class Avisos extends Component {
 
 const mapStateToProps = state => 
   ({
+    role: state.login.user.role,
     isRequesting: state.usuario.isRequesting,
-    avisos: state.usuario.avisos
+    avisos: state.usuario.avisos,
+    newAviso: {...state.usuario.newAviso}
   })
 
 const mapDispatchToProps = dispatch => 
   bindActionCreators({
-    doRequestAvisos
+    doRequestAvisos,
+    updateField,
+    doSaveAviso
   }, dispatch)
 
 
